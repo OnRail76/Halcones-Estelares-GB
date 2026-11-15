@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "non_title_comparison": {
+    "title": "Eurodance notes and playback unchanged",
+    "techno_1": "identical APU register trace",
+    "game_over": "identical APU register trace"
+  },
+  "rom_sha256": "d47bc5f3150d8de58d0737718badc62ba37b7dc0ada7c6b8205209ad2e12f2f7"
+}

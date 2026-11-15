@@ -1,0 +1,73 @@
+{
+  "result": "PASS",
+  "fire_period_logic_ticks_by_phase": {
+    "1": [
+      70,
+      54,
+      28,
+      42
+    ],
+    "2": [
+      60,
+      46,
+      24,
+      36
+    ],
+    "3": [
+      53,
+      41,
+      21,
+      32
+    ],
+    "5": [
+      43,
+      33,
+      17,
+      25
+    ],
+    "10": [
+      29,
+      22,
+      11,
+      17
+    ],
+    "20": [
+      17,
+      13,
+      7,
+      10
+    ],
+    "99": [
+      10,
+      8,
+      6,
+      10
+    ]
+  },
+  "boss_hp_by_phase": {
+    "1": 32,
+    "2": 40,
+    "3": 48,
+    "10": 104,
+    "99": 112
+  },
+  "four_attacks_observed": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "two_crows_summoned": true,
+  "controls_during_each_attack": {
+    "1": "B activates; simultaneous A blocked during shield",
+    "2": "B activates; simultaneous A blocked during shield",
+    "0": "B activates; simultaneous A blocked during shield",
+    "3": "B activates; simultaneous A blocked during shield"
+  },
+  "music_pauses_and_resumes": true,
+  "victory_preserves_score_lives_recharge": true,
+  "next_loop_returns_to_wave_1": true,
+  "phase_99_saturates": true,
+  "limits": "Prepared RAM scenarios in PyBoy DMG; cadence measured with projectile slots cleared.",
+  "rom_sha256": "d47bc5f3150d8de58d0737718badc62ba37b7dc0ada7c6b8205209ad2e12f2f7"
+}

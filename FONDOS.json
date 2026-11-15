@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "moai_field_and_star_identical_to_013": true,
+  "cloud_ink": 1,
+  "star_ink": 2,
+  "projectile_ink": 3,
+  "static_background": true,
+  "rom_sha256": "d47bc5f3150d8de58d0737718badc62ba37b7dc0ada7c6b8205209ad2e12f2f7"
+}
