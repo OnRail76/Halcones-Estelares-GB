@@ -54,7 +54,8 @@ assert get('music_step')!=melody_step,'music transport must run during gameplay'
 assert bg()==base,'stars/background changed during normal play'
 assert p.memory[0xff42]==p.memory[0xff43]==0
 assert 85<=steps<=105,('simulation rate',steps)
-# Curved CROW sorties must return visibly to a formation slot.
+# Curved CROW fixture; the seventh invasion pattern is covered separately.
+put('pattern_id',1)
 wait(lambda:any(mode(i)==3 for i in range(10)))
 returning=next(i for i in range(10) if mode(i)==3);previous=p.memory[sym['foes']+returning*5+1]
 tick(3);current=p.memory[sym['foes']+returning*5+1]
@@ -82,14 +83,14 @@ for wave in range(1,7):
  wait(lambda:u32('score')==old+10);wait(lambda:get('state')==4)
  if wave==1:tick(30);snap('oleada_superada')
  wait(lambda:get('state')==1)
-assert get('wave')==7 and get('boss_hp')==32
+assert get('wave')==7 and get('boss_hp')==48
 snap('moai')
 # Warning is part of the face and remains visible during mouth-open fire.
 arrange();put('fire_cd',9);put('paused',0);wait(lambda:get('moai_eyes')==1);snap('moai_ojos')
 arrange();put('fire_cd',1);put('paused',0);wait(lambda:get('moai_mouth')==1);snap('moai_boca')
-hitboss(24);assert get('moai_stage')==1;snap('moai_grieta_12')
-hitboss(16);assert get('moai_stage')==2,(get('boss_hp'),get('boss_max_hp'),get('moai_stage'));snap('moai_grieta_6')
-hitboss(8);assert get('moai_stage')==3;snap('moai_grieta_3')
+hitboss(36);assert get('moai_stage')==1;snap('moai_grieta_12')
+hitboss(24);assert get('moai_stage')==2,(get('boss_hp'),get('boss_max_hp'),get('moai_stage'));snap('moai_grieta_6')
+hitboss(12);assert get('moai_stage')==3;snap('moai_grieta_3')
 hitboss(0);wait(lambda:get('state')==6)
 frames=[];partial=False
 while get('state')==6:
@@ -120,5 +121,5 @@ arrange();protect=False;put('lives',1);put('invulnerable',0);put('shield_state',
 p.memory[sym['plasma']:sym['plasma']+3]=list(struct.pack('<BBB',get('px')+8,120,1));put('paused',0)
 wait(lambda:get('state')==2);assert get('music_on')==0,'Game Over stops music';tick(190);snap('gameover');press('start');wait(lambda:get('state')==0)
 p.stop()
-report={'result':'PASS','simulation_ticks_per_240_vblanks':steps,'idle_tile_uploads_per_240_vblanks':0,'checks':['dark techno in title and combat','right sidebar','no LCD interrupt','static star map','no scroll','movement borders','single press fire','two shots','shield/recharge','pause','crow scout return','new arcade patterns covered by test_arcade_flow.py','six waves','32 initial boss HP','eye warning','mouth opening','cracks at 75/50/25 percent','block dissolve before centered victory interlude','phase 2','extra life at 100 hits','score saturates at 99990','game over/restart'],'limitations':'PyBoy DMG; collision fixtures and temporary invulnerability in paused RAM; no hardware test or unassisted full playthrough'}
+report={'result':'PASS','simulation_ticks_per_240_vblanks':steps,'idle_tile_uploads_per_240_vblanks':0,'checks':['dark techno in title and combat','right sidebar','no LCD interrupt','static star map','no scroll','movement borders','single press fire','two shots','shield/recharge','pause','crow scout return','new arcade patterns covered by test_arcade_flow.py','six waves','48 initial boss HP','eye warning','mouth opening','cracks at 75/50/25 percent','block dissolve before centered victory interlude','phase 2','extra life at 100 hits','score saturates at 99990','game over/restart'],'limitations':'PyBoy DMG; collision fixtures and temporary invulnerability in paused RAM; no hardware test or unassisted full playthrough'}
 (R/'PRUEBAS.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))

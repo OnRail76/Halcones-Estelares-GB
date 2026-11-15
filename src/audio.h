@@ -64,8 +64,7 @@ void audio_tick(void){uint16_t f;uint8_t k,duck;
  if(noise_hold)noise_hold--;
  duck=fx_id>=FX_EXPLODE;
  if(music_on){
-  if(state==TITLE){title_light++;if(title_light==24||title_light==96)BGP_REG=0x0b;if(title_light==32||title_light==104)BGP_REG=0x1b;}
-  NR32_REG=state==DYING?0:(state==TITLE&&!duck?0x40:0x60);
+  NR32_REG=state==DYING?0:0x60;
   if(bass_drop && !--bass_drop){NR33_REG=bass_pitch;NR34_REG=0x40|(bass_pitch>>8);}
   music_clock+=22; /* 132 BPM approximately, independent of rendering. */
   if(music_clock>=149){music_clock-=149;k=music_step&15;if(!k)music_song=0;

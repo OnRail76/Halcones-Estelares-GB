@@ -11,3 +11,9 @@ void packed_tiles(const uint8_t *src,uint8_t first,uint8_t count,uint8_t sprite)
   }}
  }
 }
+
+/* Reuse the HUD alphabet: reconstruct identical 8x8 font tiles at scene load. */
+void load_font(uint8_t first){uint8_t tile[16],i,y,b;const uint8_t *src=pixel_font;
+ tile[14]=0;tile[15]=0;
+ for(i=0;i<FONT_COUNT;i++){for(y=0;y<7;y++){b=*src++<<2;tile[y*2]=b;tile[y*2+1]=b;}set_bkg_data(first++,1,tile);}
+}

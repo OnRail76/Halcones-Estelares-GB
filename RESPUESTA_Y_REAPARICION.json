@@ -26,8 +26,8 @@
     1,
     2,
     1,
-    2,
-    2,
+    1,
+    1,
     1,
     1
   ],
@@ -50,16 +50,16 @@
     1,
     1,
     2,
-    2,
+    3,
     1,
     2,
-    2,
+    1,
     1,
     1
   ],
   "max_press_to_spawn_vblanks": 2,
   "max_press_to_visible_vblanks": 3,
-  "player_updates_in_240_vblanks": 236,
+  "player_updates_in_240_vblanks": 238,
   "death_animation_vblanks": 36,
   "respawn_invulnerability_vblanks": 119,
   "death_tiles_seen": [
@@ -70,5 +70,5 @@
   ],
   "can_move_and_fire_while_invulnerable": true,
   "damage_restored_after_grace": true,
-  "rom_sha256": "d47bc5f3150d8de58d0737718badc62ba37b7dc0ada7c6b8205209ad2e12f2f7"
+  "rom_sha256": "2156d5293d321d1579201830a97c0dc544ad911d703237c109e8d149ff4eaefa"
 }

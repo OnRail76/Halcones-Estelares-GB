@@ -1,0 +1,42 @@
+{
+  "result": "PASS",
+  "selection_samples": 1536,
+  "patterns": {
+    "1": 245,
+    "6": 227,
+    "7": 213,
+    "2": 216,
+    "4": 229,
+    "3": 189,
+    "5": 217
+  },
+  "large_wave_compositions": {
+    "2": 313,
+    "0": 283,
+    "1": 294
+  },
+  "all_18_pattern_composition_pairs": true,
+  "first_phase_trials": 256,
+  "with_invaders": 139,
+  "without_invaders": 117,
+  "rng_period": 65535,
+  "actual_rng_transitions_checked": 2458,
+  "refill_batch_sizes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "reinforcement_limit_per_wave": 4,
+  "queued_crows_block_refill": true,
+  "laser_and_shield_kills_tested": true,
+  "crow_hitbox_in_late_wave": 8,
+  "max_load_enemies": 9,
+  "max_load_player_updates_per_240": 240,
+  "max_load_short_fire_presses": 24,
+  "max_load_shield_response_vblanks": 2,
+  "invaders_oam_frames": 720,
+  "invaders_control_and_static_background": true,
+  "limitations": "PyBoy DMG; wave, collision and protection RAM fixtures; no physical-console verification.",
+  "rom_sha256": "2156d5293d321d1579201830a97c0dc544ad911d703237c109e8d149ff4eaefa"
+}

@@ -32,5 +32,10 @@
     "samples": 128584,
     "rate": 48000,
     "peak": 1536
+  },
+  "track_titles": {
+    "title": "Eurodance noventero",
+    "gameplay": "Tecno oscuro 1",
+    "game_over": "Tonadilla de Game Over"
   }
 }

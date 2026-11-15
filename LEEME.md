@@ -1,9 +1,59 @@
-# Halcones Estelares — Game Boy 0.14
+# Halcones Estelares — Game Boy 0.16
 
 Adaptación nativa para Game Boy clásica (DMG) del juego de Tony C. Ware.
 Referencia comprobada: el TAP **HALCONES_ESTELARES_1_3_3.tap** adjuntado por el
 usuario coincide byte por byte con el TAP reconstruido desde los fuentes 1.3.3.
 SHA-256: `0db551592d01900287f0dad4754b840589075fb50ae3e7405ea66dbf21266ddf`.
+
+
+## Argumento y música
+
+La historia original completa figura en [HISTORIA.md](HISTORIA.md). Las grabaciones actuales se identifican como **Eurodance noventero**, **Tecno oscuro 1** y **Tonadilla de Game Over**; consultar [BANDA_SONORA.md](BANDA_SONORA.md).
+
+## Novedades 0.16 — retirada CROW y MOAI reforzado
+
+La invasión abandona la zona baja: al llegar a su umbral los supervivientes
+suben suavemente, se reagrupan arriba y repiten el patrón. Conservan las bajas,
+no se teletransportan ni reaparecen enemigos destruidos. Funciona también con
+un único CROW; la pausa detiene el ascenso.
+
+MOAI comienza con 48 impactos (+50 %), suma ocho por fase y llega a 128.
+Cada invocación repone los huecos hasta seis CROW simultáneos, en tres pares
+con posiciones de salida distintas. No hay límite total de invocaciones:
+continúan mientras el jefe viva. Al morir se eliminan todos los acompañantes.
+Se mantienen tres proyectiles enemigos y la prioridad de los controles.
+
+Para conservar los 32 KiB, los tiles del alfabeto se reconstruyen durante la
+carga de escena usando el mismo alfabeto del marcador. Los píxeles resultantes
+son idénticos a los anteriores; no se añade trabajo al bucle de combate.
+
+Ver REAGRUPACION_Y_MOAI.json: ciclos completos con 1, 4 y 10 CROW; tres tandas
+de seis CROW del jefe eliminadas y repuestas; colisiones y limpieza final.
+
+## Novedades 0.15 — oleadas variables y refuerzos
+
+- Siete patrones: los seis anteriores y una invasión rápida de diez CROW con
+  marcha lateral colectiva, descenso al invertir y aceleración al quedar cuatro.
+  Puede sustituir cualquier oleada normal 1–6, desde la primera fase, sin garantía
+  de aparecer en cada ciclo. El MOAI sigue ocupando la séptima oleada.
+- Oleadas 3–6: elección entre seis grandes, cuatro grandes y dos CROW, o
+  dos grandes y cuatro CROW. El tipo grande conserva su tramo: cazador o kamikaze.
+- Al destruir un grande sin CROW activos ni pendientes, entran de uno a cuatro
+  CROW por turnos después de una espera breve. Presupuesto máximo: cuatro
+  refuerzos por oleada. La oleada no termina hasta eliminarlos. Los impactos
+  de láser y las destrucciones con escudo activan la misma regla.
+- Tamaño, colisión de láser, dibujo y origen del disparo dependen del enemigo.
+- Generador de oleadas: LFSR de 16 bits, ciclo 65.535, sembrado al iniciar una
+  partida. Se elimina la secuencia corta de 17 estados y la resiembra por oleada.
+  Selección acotada con rechazo; se permiten repeticiones, sin listas forzadas.
+- La ROM conserva 32 KiB. Se comprimen más recursos de carga de escena sin
+  alterar sus píxeles ni añadir descompresión al combate.
+
+Pruebas: 1.536 selecciones, siete patrones y las 18 combinaciones clásicas;
+239 actualizaciones de nave en 240 VBlank con cinco grandes más cuatro CROW,
+24 pulsaciones respondidas y escudo activo en dos VBlank bajo esa carga.
+La invasión apareció en 139 de 256 ciclos preparados. Ver VARIEDAD_OLEADAS.json.
+PyBoy DMG; escenarios preparados en RAM, pendiente de consola física.
 
 ## Jugar
 
@@ -47,7 +97,7 @@ intermedios. Game Over conserva la nave de perfil y la puntuación final.
 Se conserva la secuencia de seis oleadas y MOAI, pero por petición del usuario
 la coreografía evoluciona hacia patrones propios inspirados en clásicos arcade.
 No es una reproducción literal de los patrones de esos juegos.
-Desde la 0.10, cada oleada selecciona uno de los seis patrones al azar: CROW,
+Desde la 0.10, cada oleada seleccionaba uno de los seis patrones al azar: CROW,
 cazadores y kamikazes pueden recibir cualquiera. Se conservan sus gráficos,
 cantidad, tamaño y colisiones. Al ser aleatorio, un patrón puede repetirse.
 
@@ -62,7 +112,7 @@ cantidad, tamaño y colisiones. Al ser aleatorio, un patrón puede repetirse.
 
 Los atacantes se eligen con una pequeña secuencia pseudoaleatoria inicializada
 con el momento de entrada y la fase. Los últimos tres supervivientes acortan
-sus pausas. Todos regresan físicamente a su posición; ya no se teletransportan
+sus pausas. En los seis patrones clásicos regresan físicamente a su posición; ya no se teletransportan
 al borde superior. Los proyectiles normales pueden salir en diagonal hacia la
 posición de la nave al disparar. Se conservan los tres proyectiles enemigos
 simultáneos y los disparos rectos alternos de los ojos del MOAI.
@@ -84,7 +134,7 @@ Usa la máscara de 48×88 realmente compilada en la 1.3.3, adaptada a 40×72 con
 relieve en grises y cuencas oscuras. Los ojos se iluminan antes de disparar y
 mientras abre la boca. Dispara alternando ojos, con tres proyectiles como máximo.
 
-Tiene 32 puntos de vida al inicio, ocho más por vuelta hasta 112. Las grietas
+Tiene 48 puntos de vida al inicio, ocho más por vuelta hasta 128. Las grietas
 se acumulan al quedar el 75%, 50% y 25% de resistencia,
 partiendo de los recorridos del código original. Para reproducibilidad, el
 serpenteo usa una semilla fija; en ZX dependía del instante de impacto.
@@ -115,7 +165,7 @@ Canal 1 para efectos tonales; canal 2 y onda para música; el ruido se comparte
 con prioridad para impactos y explosiones. La melodía baja durante los efectos
 importantes, y la percusión cede su canal. Secuenciador en VBlank, sin esperas
 activas. `audio/` contiene sonido real de la APU capturado por PyBoy: título,
-combate, segundo tema, Game Over y efectos aislados. Las muestras aisladas
+combate, Game Over y efectos aislados. Las muestras aisladas
 seleccionan las señales y estados del secuenciador en RAM; los efectos usan
 la música desactivada para permitir escucharlas por separado.
 

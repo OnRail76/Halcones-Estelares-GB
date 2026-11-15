@@ -10,7 +10,7 @@ void player_tick(void){uint8_t i,j,slot,speed=1+(sys_time&1),old_y,old_x=px;
  for(i=0;i<2;i++)if(shots[i].live){
   old_y=shots[i].y;
   shots[i].y=old_y>LASER_SPEED?old_y-LASER_SPEED:0;
-  if(state==PLAY && wave==7)for(j=0;j<2;j++)if(foes[j].live && shots[i].x>=foes[j].x && shots[i].x<foes[j].x+8 && shots[i].y<foes[j].y+8 && old_y>=foes[j].y){foes[j].live=0;hide_enemy(j);shots[i].live=0;add_score(10);boom(foes[j].x,foes[j].y);break;}
+  if(state==PLAY && wave==7)for(j=0;j<6;j++)if(foes[j].live && shots[i].x>=foes[j].x && shots[i].x<foes[j].x+8 && shots[i].y<foes[j].y+8 && old_y>=foes[j].y){foes[j].live=0;hide_enemy(j);shots[i].live=0;add_score(10);boom(foes[j].x,foes[j].y);break;}
   if(!shots[i].live)continue;
   if(state==PLAY && wave==7 && !moai_intro){
    if(shots[i].x>=MOAI_X && shots[i].x<MOAI_X+MOAI_W && shots[i].y<MOAI_Y+MOAI_H && old_y>=MOAI_Y){
@@ -18,9 +18,9 @@ void player_tick(void){uint8_t i,j,slot,speed=1+(sys_time&1),old_y,old_x=px;
     if(!boss_hp){clear_shots();state=MOAI_DEATH;moai_death_begin();return;}
    }
   }else if(state==PLAY && wave!=7)for(j=0;j<10;j++)if(foes[j].live && foes[j].mode!=WAIT_ENTRY){
-   uint8_t size=wave<=2?8:16;
+   uint8_t size=foes[j].kind?16:8;
    if(shots[i].x>=foes[j].x && shots[i].x<foes[j].x+size && shots[i].y<foes[j].y+size && old_y>=foes[j].y){
-    foes[j].live=0;hide_enemy(j);shots[i].live=0;add_score(10);boom(foes[j].x,foes[j].y);break;
+    foes[j].live=0;hide_enemy(j);shots[i].live=0;add_score(10);boom(foes[j].x,foes[j].y);waves_reinforce(j);break;
    }
   }
   if(shots[i].y<4)shots[i].live=0;

@@ -44,7 +44,7 @@ void moai_expression(uint8_t eyes,uint8_t mouth,uint8_t full){uint8_t y,i,hi,lo,
 }
 void moai_setup(void){uint8_t i,j;
  moai_stage=0;moai_eyes=0;moai_mouth=0;moai_eye_side=0;moai_mouth_timer=0;moai_flash=0;moai_blocks=0;moai_bidx=0;moon_x=10;moon_clock=0;
- moai_cursor=0;moai_intro=9;moai_expression(0,0,1);set_bkg_data(112,16,jupiter_data);
+ moai_cursor=0;moai_intro=9;moai_expression(0,0,1);packed_tiles(jupiter_data_rle,112,16,0);
  for(i=0;i<4;i++){for(j=0;j<4;j++){tmp[j]=112+i*4+j;field[(10+i)*32+10+j]=tmp[j];}set_bkg_tiles(10,10+i,4,1,tmp);}
 }
 void moai_damage(void){uint8_t stage=0;

@@ -66,6 +66,8 @@ void pair(uint8_t n,uint8_t tile,int16_t x,int16_t y){
 }
 void blank(void){uint16_t i; for(i=0;i<576;i++)field[i]=0;set_bkg_tiles(0,0,32,18,field);SCY_REG=0;SCX_REG=0;}
 void waves_setup(void);
+void waves_seed(void);
+void waves_reinforce(uint8_t killed);
 void boss_init(void);
 void render_fx(void);
 void hide_enemy(uint8_t i){hide_sprite(13+i*2);hide_sprite(14+i*2);}
@@ -91,12 +93,12 @@ void space_field(uint8_t cosmic){uint8_t i,x,y,t;
  set_bkg_tiles(0,0,32,18,field);
 }
 void setup_field(void){
- DISPLAY_OFF;hide_all();packed_tiles(font_data_rle,0,FONT_COUNT,0);space_field(1);
+ DISPLAY_OFF;hide_all();load_font(0);space_field(1);
  packed_tiles(waveclear_data_rle,64,WAVECLEAR_COUNT,0);hud_setup();SHOW_BKG;SHOW_SPRITES;
 }
 void title(void){uint8_t i;DISPLAY_OFF;HIDE_WIN;hide_all();blank();
  packed_tiles(title_data_rle,0,TITLE_COUNT,0);
- set_bkg_tiles(0,0,20,18,title_map);
+ unpack(title_map_rle,field,360);set_bkg_tiles(0,0,20,18,field);
  SHOW_BKG;SHOW_SPRITES;oam_commit();DISPLAY_ON;state=TITLE;ticks=0;paused=0;audio_title();
  for(i=0;i<40;i++)set_sprite_prop(i,0);
 }
@@ -122,31 +124,23 @@ void wave_clear_tick(void){uint8_t row;
 }
 void victory_screen(void){uint8_t i,next=phase<99?phase+1:99;
  DISPLAY_OFF;HIDE_WIN;hide_all();blank();
- packed_tiles(victory_data_rle,0,VICTORY_COUNT,0);packed_tiles(font_data_rle,212,FONT_COUNT,0);
- set_bkg_tiles(0,0,20,18,victory_map);
+ packed_tiles(victory_data_rle,0,VICTORY_COUNT,0);load_font(212);
+ unpack(victory_map_rle,field,360);set_bkg_tiles(0,0,20,18,field);
  number(tmp,next,2);for(i=0;i<2;i++)tmp[i]+=212;set_bkg_tiles(9,13,2,1,tmp);
  number(tmp,score,5);for(i=0;i<5;i++)tmp[i]+=212;set_bkg_tiles(11,15,5,1,tmp);
  tmp[0]=212+27+lives;set_bkg_tiles(11,16,1,1,tmp);
  state=VICTORY;state_timer=180;oam_commit();DISPLAY_ON;sfx_start(FX_LIFE);
 }
-void spawn_wave(void){uint8_t i,n;
+void spawn_wave(void){uint8_t i;
  clear_plasma();for(i=0;i<10;i++)hide_enemy(i);hide_sprite(35);ticks=0;explosion=0;
  hide_sprite(33);hide_sprite(34);audio_wave();
  difficulty_refresh();fire_cd=fire_period;attack_cd=48;shooter=0;attack_pair=0;rest_ticks=0;
  if(wave==7){space_field(0);boss_init();moai_setup();
- }else{
- n=wave<=2?10:6;
- for(i=0;i<10;i++){
- foes[i].live=i<n;foes[i].x=wave<=2?8+(i%5)*20:12+(i%3)*32;
- foes[i].y=20+(i/(wave<=2?5:3))*24;foes[i].mode=wave>=5?1:0;
- foes[i].kind=wave<3?0:(wave<5?1:2);
- }
- }
- if(wave!=7)waves_setup();
+ }else{waves_setup();}
  if(!(LCDC_REG&0x80)){for(i=0;i<8;i++)update_hud();hud_flush_all();}
  state=PLAY;oam_commit();DISPLAY_ON;
 }
-void new_game(void){ship_tilt=0;state=TRANSITION;audio_game();death_timer=0;sim_phase=0;px=48;lives=3;wave=1;phase=1;score=0;life_hits=0;shield_state=0;shield_timer=0;invulnerable=120;explosion=0;clear_shots();setup_field();spawn_wave();}
+void new_game(void){waves_seed();ship_tilt=0;state=TRANSITION;audio_game();death_timer=0;sim_phase=0;px=48;lives=3;wave=1;phase=1;score=0;life_hits=0;shield_state=0;shield_timer=0;invulnerable=120;explosion=0;clear_shots();setup_field();spawn_wave();}
 void damage(void){if(state!=PLAY || shield_state==1 || invulnerable)return;
  lives--;death_x=px;death_timer=36;state=DYING;explosion=0;clear_shots();
  hide_sprite(6);hide_sprite(7);hide_sprite(33);hide_sprite(34);sfx_start(FX_DEATH);
@@ -157,8 +151,8 @@ void respawn(void){uint8_t i;ship_tilt=0;px=48;clear_shots();
  sim_phase=0;clock_last=sys_time;
 }
 void end_screen(void){uint8_t i;audio_over();DISPLAY_OFF;HIDE_WIN;hide_all();blank();
- packed_tiles(gameover_data_rle,0,GAMEOVER_COUNT,0);packed_tiles(font_data_rle,212,FONT_COUNT,0);
- set_bkg_tiles(0,0,20,18,gameover_map);
+ packed_tiles(gameover_data_rle,0,GAMEOVER_COUNT,0);load_font(212);
+ unpack(gameover_map_rle,field,360);set_bkg_tiles(0,0,20,18,field);
  text(2,12,"PUNTOS",212);number(tmp,score,5);for(i=0;i<5;i++)tmp[i]+=212;set_bkg_tiles(11,12,5,1,tmp);
  oam_commit();DISPLAY_ON;state=OVER;state_timer=180;
 }
@@ -180,7 +174,7 @@ void render_fx(void){
 void render(void){uint8_t i;
  for(i=0;i<10;i++){
  if(foes[i].live && foes[i].mode!=WAIT_ENTRY){
-  if(wave<=2 || wave==7){set_sprite_tile(13+i*2,48+((ticks>>3)&1)*2);move_sprite(13+i*2,foes[i].x+8,foes[i].y+16);hide_sprite(14+i*2);}
+  if(!foes[i].kind){set_sprite_tile(13+i*2,48+((ticks>>3)&1)*2);move_sprite(13+i*2,foes[i].x+8,foes[i].y+16);hide_sprite(14+i*2);}
   else pair(13+i*2,4+foes[i].kind*8+((ticks>>3)&1)*4,foes[i].x,foes[i].y);
  }else{hide_sprite(13+i*2);hide_sprite(14+i*2);}}
  for(i=0;i<3;i++){set_sprite_tile(10+i,42);if(plasma[i].live)move_sprite(10+i,plasma[i].x+5,plasma[i].y+16);else hide_sprite(10+i);}
@@ -197,11 +191,11 @@ void step(void){uint8_t i,j,alive=0;
  waves_move();
  if(!fire_cd){
   fire_cd=fire_period;
-  for(j=0;j<10;j++){if(++shooter>=10)shooter=0;if(foes[shooter].live && foes[shooter].y<80){fire_enemy(foes[shooter].x+(wave<=2?4:8),foes[shooter].y+(wave<=2?8:14));break;}}
+  for(j=0;j<10;j++){if(++shooter>=10)shooter=0;if(foes[shooter].live && foes[shooter].mode!=WAIT_ENTRY && foes[shooter].y<120){fire_enemy(foes[shooter].x+(foes[shooter].kind?8:4),foes[shooter].y+(foes[shooter].kind?14:8));break;}}
  }
  for(i=0;i<10;i++)if(foes[i].live){Enemy *e=&foes[i];alive++;
- if(e->mode!=WAIT_ENTRY && e->live && hit(px+8,128,e->x-5,e->y-6,26,28)){
- if(shield_state==1){e->live=0;hide_enemy(i);add_score(10);boom(e->x,e->y);}else damage();}
+ if(e->mode!=WAIT_ENTRY && e->live && hit(px+8,128,e->x-5,e->y-6,e->kind?26:18,e->kind?28:22)){
+ if(shield_state==1){e->live=0;hide_enemy(i);add_score(10);boom(e->x,e->y);waves_reinforce(i);}else damage();}
  }
  if(!alive && state==PLAY){wave_clear_screen();return;}
  }
@@ -212,7 +206,7 @@ void step(void){uint8_t i,j,alive=0;
  render();
 }
 void main(void){
- DISPLAY_OFF;oam_init();BGP_REG=0x1b;OBP0_REG=0x1b;SPRITES_8x16;packed_tiles(sprite_data_rle,0,SPRITE_COUNT,1);set_sprite_data(48,4,crow_data);set_sprite_data(52,12,ship_native);set_sprite_data(64,2,moon_data);packed_tiles(ship_blast_data_rle,66,36,1);
+ DISPLAY_OFF;oam_init();BGP_REG=0x1b;OBP0_REG=0x1b;SPRITES_8x16;packed_tiles(sprite_data_rle,0,SPRITE_COUNT,1);packed_tiles(crow_data_rle,48,4,1);packed_tiles(ship_native_rle,52,12,1);set_sprite_data(64,2,moon_data);packed_tiles(ship_blast_data_rle,66,36,1);
  NR52_REG=0x80;NR50_REG=0x77;NR51_REG=0xff;record=0;add_VBL(timers);add_TIM(input_tick);TMA_REG=240;TIMA_REG=240;TAC_REG=0x04;set_interrupts(VBL_IFLAG|TIM_IFLAG);title();clock_last=sys_time;
  while(1){uint8_t elapsed,run_sim;
  /* If rendering crossed VBlank, consume that frame now instead of waiting twice. */

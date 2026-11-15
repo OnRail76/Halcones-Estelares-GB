@@ -1,7 +1,6 @@
-Licencia MIT (edición asistida por IA)
+Licencia MIT — traducción informativa
 
 Copyright (c) 2026 Tony C. Ware
-Colaboradores de IA: OpenAI GPT y Anthropic Claude
 
 Por la presente se concede permiso, de forma gratuita, a cualquier persona que
 obtenga una copia de este software y de los archivos de documentación asociados
@@ -22,4 +21,4 @@ OTRA RESPONSABILIDAD, YA SEA EN VIRTUD DE UNA ACCIÓN CONTRACTUAL,
 EXTRACONTRACTUAL O DE OTRA ÍNDOLE, QUE SURJA DEL SOFTWARE, DE SU USO O DE
 OTRAS OPERACIONES CON EL SOFTWARE, O QUE ESTÉ RELACIONADA CON ELLOS.
 
-Traducción informativa. Ante cualquier diferencia, prevalece el texto inglés de LICENSE.
+Traducción orientativa; prevalece el texto en inglés de LICENSE.

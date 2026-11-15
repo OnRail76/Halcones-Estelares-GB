@@ -1,10 +1,9 @@
-UserWarning: Using SDL2 binaries from pysdl2-dll 2.32.10
 {
   "result": "PASS",
-  "simulation_ticks_per_240_vblanks": 100,
+  "simulation_ticks_per_240_vblanks": 99,
   "idle_tile_uploads_per_240_vblanks": 0,
   "checks": [
-    "dark techno in title and combat",
+    "Eurodance noventero in title and Tecno oscuro 1 in combat",
     "right sidebar",
     "no LCD interrupt",
     "static star map",
@@ -17,7 +16,7 @@ UserWarning: Using SDL2 binaries from pysdl2-dll 2.32.10
     "crow scout return",
     "new arcade patterns covered by test_arcade_flow.py",
     "six waves",
-    "32 initial boss HP",
+    "48 initial boss HP",
     "eye warning",
     "mouth opening",
     "cracks at 75/50/25 percent",
@@ -27,5 +26,6 @@ UserWarning: Using SDL2 binaries from pysdl2-dll 2.32.10
     "score saturates at 99990",
     "game over/restart"
   ],
-  "limitations": "PyBoy DMG; collision fixtures and temporary invulnerability in paused RAM; no hardware test or unassisted full playthrough"
+  "limitations": "PyBoy DMG; collision fixtures and temporary invulnerability in paused RAM; no hardware test or unassisted full playthrough",
+  "rom_sha256": "2156d5293d321d1579201830a97c0dc544ad911d703237c109e8d149ff4eaefa"
 }

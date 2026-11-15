@@ -34,11 +34,11 @@ frames=deque(maxlen=6);addr=sym['oam_commit'];shadow=sym['shadow_OAM']
 p.hook_register(1 if addr>=0x4000 else 0,addr,lambda c:c.append(bytes(p.memory[shadow:shadow+160])),frames)
 patterns={};coherent=0;gif=[]
 for wave in range(1,7):
- enter(wave);pattern=g('pattern_id');seen=set();active_max=0;return_seen=False;bounds=True;staggered=False;bg=bytes(p.memory[0x9800:0x9c00]);reentries=0
+ enter(wave);w('pattern_id',wave);pattern=g('pattern_id');seen=set();active_max=0;return_seen=False;bounds=True;staggered=False;bg=bytes(p.memory[0x9800:0x9c00]);reentries=0
  old_modes=[4]*10
  for f in range(650):
   if f%30==0:w('invulnerable',255)
-  tick();rows=[foe(i) for i in range(10 if wave<3 else 6)]
+  tick();rows=[foe(i) for i in range(10)]
   seen.update(e[3] for e in rows if e[2]);active_max=max(active_max,sum(e[2] and e[3] in (1,2,3,6) for e in rows))
   if any(e[3]==4 for e in rows) and any(e[3]==5 for e in rows):staggered=True
   for i,e in enumerate(rows):
@@ -61,13 +61,13 @@ family_patterns={}
 for family_wave in (1,3,5):
  choices=set();previous=None
  for attempt in range(120):
-  enter(family_wave);chosen=g('pattern_id');assert 1<=chosen<=6
+  enter(family_wave);chosen=g('pattern_id');assert 1<=chosen<=7
   previous=chosen;choices.add(chosen)
-  if len(choices)==6:break
- assert choices==set(range(1,7)),(family_wave,choices)
+  if len(choices)==7:break
+ assert choices==set(range(1,8)),(family_wave,choices)
  family_patterns[family_wave]=sorted(choices)
 # Kill through the actual laser path; both hardware halves must disappear.
-enter(3);tick(100);w('paused',1);tick(3);clear()
+enter(3);w('pattern_id',1);w('crow_budget',0);tick(100);w('paused',1);tick(3);clear()
 for i in range(10):putfoe(i,[90,20,0,0,1])
 putfoe(0,[70,50,1,0,1]);putfoe(1,[90,20,1,0,1])
 for i,x,y in [(0,70,50),(1,90,20)]:p.memory[sym['home_x']+i]=x;p.memory[sym['home_y']+i]=y

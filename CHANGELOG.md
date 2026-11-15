@@ -1,12 +1,22 @@
 # Registro de versiones — Halcones Estelares GB
 
-## 0.14 · 15 noviembre 2026
+## v0.16 · 15 noviembre 2026
 
-- Versión Game Boy DMG publicada con ROM original verificada de 32 KiB.
-- Fondo cósmico estático, estrellas mejoradas y un único tema tecno oscuro durante el combate.
-- Título con música Eurodance y tonadilla de Game Over.
-- Seis oleadas de aves mecánicas, séptima oleada contra MOAI MONOLITH, con patrones de vuelo pseudoaleatorios.
-- Manual ilustrado, atlas visual, capturas reales y carátula oficial archivados.
-- Repositorio preparado con fuente, licencias diferenciadas para software y arte, y material histórico identificado.
+- CROW de invasión: retirada gradual, reagrupación y reanudación del ataque sin recuperar las bajas.
+- MOAI MONOLITH reforzado: 48 impactos de resistencia inicial, aumenta hasta 128. Repone hasta seis CROW simultáneos durante toda la batalla.
+- Capturas y pruebas de la nueva invasión, reagrupación, seis CROW y cuatro ataques.
+- Portada oficial y dos documentos PDF de la edición 0.16; relato original incorporado en HISTORIA.md.
+- Banda sonora con los nombres descritos en el manual: Eurodance noventero, Tecno oscuro 1 y Tonadilla de Game Over. Eliminadas grabaciones musicales antiguas.
+- Eliminados ficheros generados de depuración y materiales duplicados; código bajo MIT, arte con licencia específica.
 
-Para el historial completo de iteraciones 0.7–0.14, consultar `LEEME.md` y `docs/Atlas-y-memoria-GB-0.14.pdf`.
+## v0.15 · 15 noviembre 2026 (cambios integrados en v0.16)
+
+- Siete coreografías: nuevo patrón colectivo CROW tipo Space Invaders.
+- Oleadas mixtas de grandes y CROW; refuerzos por bajas de enemigos grandes.
+- Generador de selección con LFSR de 16 bits.
+
+## v0.14 (sustituida)
+
+- Fondo cósmico estático, Eurodance en título, un solo tema de combate y tonadilla al terminar.
+
+El historial técnico de diseño figura en LEEME.md y en el atlas de la edición 0.16.

@@ -1,16 +1,12 @@
-# GBDK generated build artifacts
+# Ficheros intermedios generados por GBDK
 /Halcones-Estelares-GB.gb
 /Halcones-Estelares-GB.map
 /Halcones-Estelares-GB.noi
-src/*.asm
-src/*.lst
-src/*.rel
-src/*.sym
-src/*.map
-src/*.noi
-__pycache__/
+*.rel
+*.lst
+*.asm
+*.sym
 *.py[cod]
+__pycache__/
 .pytest_cache/
 .DS_Store
-*.swp
-*~

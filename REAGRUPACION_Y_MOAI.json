@@ -1,0 +1,37 @@
+{
+  "result": "PASS",
+  "invader_survivors": {
+    "1": {
+      "complete_retreats": 7,
+      "max_y": 100,
+      "survivors_preserved": true
+    },
+    "4": {
+      "complete_retreats": 7,
+      "max_y": 100,
+      "survivors_preserved": true
+    },
+    "10": {
+      "complete_retreats": 4,
+      "max_y": 100,
+      "survivors_preserved": true
+    }
+  },
+  "pause_preserves_retreat": true,
+  "font_identical_to_015": true,
+  "boss_hp_by_phase": {
+    "1": 48,
+    "2": 56,
+    "5": 80,
+    "11": 128,
+    "99": 128
+  },
+  "boss_crow_limit": 6,
+  "summons_observed": 18,
+  "summon_batches_fully_destroyed": 3,
+  "all_six_laser_hitboxes_checked": true,
+  "boss_death_clears_all_helpers": true,
+  "six_crow_oam_frames": 240,
+  "limits": "PyBoy DMG; prepared phases, invulnerability and laser collisions in RAM.",
+  "rom_sha256": "2156d5293d321d1579201830a97c0dc544ad911d703237c109e8d149ff4eaefa"
+}

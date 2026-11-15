@@ -18,7 +18,7 @@ def pack(b):
    data.append(i-start-1);data.extend(b[start:i])
  return data
 def emit(name,b):
- if name in ('font_data','sprite_data','cosmos_a','cosmos_b','title_data','gameover_data','victory_data','sidebar_data','waveclear_data','ship_blast_data'):
+ if name in ('title_map','gameover_map','victory_map','crow_data','ship_native','jupiter_data','font_data','sprite_data','cosmos_a','cosmos_b','title_data','gameover_data','victory_data','sidebar_data','waveclear_data','ship_blast_data'):
   name+='_rle';b=pack(b)
  out.append('const unsigned char '+name+'[] = {'+','.join(map(str,b))+'};')
 def tiles(im,sprite=False):
@@ -36,7 +36,7 @@ forfont=Image.new('1',(8*len(chars),8))
 for i,c in enumerate(chars):
  for y,row in enumerate(F[c]):
   for x,ch in enumerate(row):forfont.putpixel((i*8+1+x,y),ch=='#')
-emit('font_data',tiles(forfont));out.append('#define FONT_COUNT '+str(len(chars)))
+out.append('#define FONT_COUNT '+str(len(chars)))
 s=runpy.run_path(str(A/'original_sprites.py'))
 ims=[]
 im=Image.open(A/'esf_interceptor.png').resize((16,16),Image.Resampling.NEAREST); ims.append(im)

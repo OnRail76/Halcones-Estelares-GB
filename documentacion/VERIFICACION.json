@@ -1,0 +1,12 @@
+{
+  "Manual-ilustrado-GB-0.16.pdf": {
+    "pages": 9,
+    "sha256": "ec5b2ca4a6f8f22701dec1f244a5d2de50963b7b531fe0b43a7fe8770d6c07c9",
+    "visual_review": "all pages rendered and inspected"
+  },
+  "Atlas-y-memoria-GB-0.16.pdf": {
+    "pages": 12,
+    "sha256": "f09fe0ad9eb00ba5519aa2392bd5fed1a12cc565025d37baf84a31d1bcb6f30b",
+    "visual_review": "all pages rendered and inspected"
+  }
+}

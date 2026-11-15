@@ -1,10 +1,6 @@
-# Explicit binary classification for reproducible diffs
-*.pdf binary
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.gif binary
 *.gb binary
+*.png binary
+*.gif binary
+*.jpg binary
+*.pdf binary
 *.wav binary
-*.scr binary
-*.bin binary

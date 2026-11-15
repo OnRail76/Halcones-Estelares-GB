@@ -10,6 +10,6 @@ Se permite descargar y jugar a la versión oficial para **uso personal** y consu
 
 Quien reutilice código bajo MIT debe mantener sus avisos de licencia y utilizar material gráfico propio o debidamente autorizado si distribuye una obra que incluya recursos visuales.
 
-La publicación del repositorio no concede derechos sobre marcas ni materiales de terceros. Este aviso se aplica asimismo a los recursos gráficos contenidos en la ROM y en los PDF.
+La publicación del repositorio no concede derechos sobre marcas ni materiales de terceros. El copyright del código y las herramientas figura en [LICENSE](LICENSE).
 
 Fondos cósmicos 0.14: arte nuevo generado con OpenAI y convertido a dos tonos para GB; no procede del ZX original.

@@ -1,62 +1,73 @@
 # HALCONES ESTELARES — GAME BOY
 
-![Carátula oficial](portada/Halcones_Estelares_GB_Caratula_Oficial.png)
+![Carátula oficial de Halcones Estelares GB](portada/Halcones_Estelares_GB_Caratula_Oficial.png)
 
-**Versión 0.14 · Nintendo Game Boy clásica (DMG) · © 2026 Tony C. Ware**
+**Versión 0.16 · Game Boy clásica (DMG) · © 2026 Tony C. Ware**
 
-Adaptación nativa para Game Boy clásica de **Halcones Estelares 1.3.3**, originalmente creado para ZX Spectrum 48K. Un arcade de pájaros espaciales: pilota el interceptor **ESF-01**, supera seis oleadas y enfréntate a **MOAI MONOLITH**. Cada victoria inicia una nueva fase de dificultad creciente.
+*Arcade de pájaros espaciales portátil.* Adaptación nativa de **Halcones Estelares 1.3.3** para ZX Spectrum 48K. No es un emulador del Spectrum: es código para Game Boy, desarrollado con GBDK 4.4.
 
-> Proyecto independiente, sin afiliación ni aprobación de Nintendo. Game Boy es una marca de Nintendo.
+## Historia
+
+**1988. El futuro.** La recién formada **Fuerza Espacial Europea** detecta señales de radio y pulsos de energía procedentes de **Europa**, la luna de Júpiter. Varias sondas desaparecen y llega la hora de estrenar el caza **ESF-01**.
+
+Pero en el vacío sideral esperan **aves cósmicas que solo quieren invadir, destruir y COMER**. ¿Qué o quién las dirige?
+
+**Sube a bordo del ESF-01, piloto. Es el momento de luchar. Sus gritos se oirán en el Cosmos.**
+
+[Leer la historia original completa](HISTORIA.md).
 
 ## Jugar
 
-**[ROM Game Boy 0.14](rom/Halcones-Estelares-GB-0.14.gb)** — 32 KiB, ROM ONLY, sin MBC ni SRAM. Usa un emulador compatible con Game Boy DMG o un cartucho flash compatible. No hay guardado permanente del récord.
+[**ROM oficial 0.16**](rom/Halcones-Estelares-GB-0.16.gb) · 32 KiB, sin MBC ni SRAM. Compatible con emuladores de Game Boy clásica y cartuchos flash compatibles. El récord se pierde al apagar.
 
-| Mando | Función |
+| Botón | Función |
 |---|---|
-| Cruceta izquierda / derecha | Mover ESF-01 |
-| A | Disparar (pulsar o mantener para fuego continuo) |
-| B | Escudo temporal (3 s; recarga 6 s) |
-| START | Empezar / pausar / continuar |
+| ← / → | Mover ESF-01 |
+| A | Disparar; puede mantenerse pulsado |
+| B | Escudo (unos 3 s, 6 s para recargar) |
+| START | Comenzar / pausar / reanudar |
 
-Tres vidas iniciales, escudo y un máximo de dos disparos propios en pantalla. La pantalla DMG de 160 × 144 píxeles reserva 112 píxeles para combate y 48 para el marcador. Se incluyen **seis patrones de ataque** y cuatro maniobras del MOAI.
+Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 píxeles y campo de juego de 112 × 144.
 
-## Documentación y material gráfico
+## Novedades 0.15–0.16
 
-- [Manual ilustrado · edición 0.14](docs/Manual-ilustrado-GB-0.14.pdf) — 9 páginas.
-- [Atlas visual y memoria · edición 0.14](docs/Atlas-y-memoria-GB-0.14.pdf) — 12 páginas.
-- [Carátula oficial PNG](portada/Halcones_Estelares_GB_Caratula_Oficial.png).
-- [Capturas y animaciones reales](capturas/) — proceden del juego o de estados preparados de emulador; no son mockups.
-- [Notas técnicas originales de ASTRA](LEEME.md) y [resultados de pruebas](PRUEBAS.txt).
+- **Siete patrones de oleada**, incluido el asalto colectivo CROW inspirado en Space Invaders.
+- **Oleadas mixtas**: cazadores o kamikazes acompañados de CROW, con hasta cuatro refuerzos extra en situaciones concretas.
+- **Invasión CROW que se retira y reagrupa** tras llegar a la parte baja, conservando las bajas.
+- **MOAI MONOLITH reforzado:** 48 impactos iniciales, +8 por fase hasta 128; invoca hasta seis CROW simultáneos y repone sus bajas hasta su destrucción.
+- Generador pseudoaleatorio LFSR de 16 bits para mayor variedad de partidas.
+- Se mantienen música, controles, escudo y gráficos de la edición vigente; ROM de **32 KiB**.
 
-## Código fuente y compilación
+## Banda sonora original
 
-El juego está programado para el procesador LR35902 de Game Boy, utilizando **GBDK 4.4**. `src/` contiene el código C, gráficos codificados y módulos de juego; `assets/` conserva recursos; `tools/` incluye generación de assets y pruebas.
+**Eurodance noventero** (título), **Tecno oscuro 1** (partida) y **Tonadilla de Game Over** (derrota). Los WAV oficiales están en [BANDA_SONORA.md](BANDA_SONORA.md), junto con la explicación de las capturas de la APU; no se incluyen grabaciones musicales antiguas descartadas.
 
-```sh
+## Documentación y recursos auténticos
+
+- [Manual ilustrado 0.16](docs/Manual-ilustrado-GB-0.16.pdf) — 9 páginas.
+- [Atlas visual y memoria 0.16](docs/Atlas-y-memoria-GB-0.16.pdf) — 12 páginas.
+- [Carátula oficial original](portada/Halcones_Estelares_GB_Caratula_Oficial.png).
+- [Capturas y animaciones de la ROM](capturas/), incluyendo CROW, invasión, reagrupación y MOAI con seis refuerzos. Algunas escenas están preparadas en RAM para comprobaciones; no son mockups.
+- [Memoria técnica detallada](LEEME.md), [historial de cambios](CHANGELOG.md) y [pruebas](PRUEBAS.txt).
+
+## Compilación
+
+Requiere **GBDK 4.4** y `make`:
+
+```bash
 make GBDK_HOME=/ruta/a/gbdk
 ```
 
-Esto genera `Halcones-Estelares-GB.gb` en la raíz del proyecto. Para regenerar los datos gráficos: `make assets`. **No es necesario recompilar para jugar:** el binario oficial está en `rom/`.
+El binario generado estará en la raíz `Halcones-Estelares-GB.gb`. La ROM publicada de referencia se encuentra en `rom/`; no es necesario compilarla para jugar. Las herramientas de prueba pueden necesitar PyBoy, NumPy y ficheros auxiliares de la compilación.
 
-Las pruebas automatizadas usan PyBoy DMG; algunas requieren el fichero `.noi` generado por GBDK y preparan estados de RAM. La verificación en hardware Game Boy físico permanece pendiente. No se afirma que esta publicación haya sido recompilada de nuevo aquí.
-
-## Audio
-
-`audio/` contiene capturas auténticas del audio de emulación. La versión 0.14 usa música eurodance original en título, tecno oscuro en partida y cierre en Game Over. `audio/historico/` conserva capturas de temas descartados, **no utilizados** por la ROM 0.14.
-
-## Integridad
-
-**SHA-256 ROM 0.14:**
+**ROM oficial SHA-256:**
 
 ```text
-d47bc5f3150d8de58d0737718badc62ba37b7dc0ada7c6b8205209ad2e12f2f7
+2156d5293d321d1579201830a97c0dc544ad911d703237c109e8d149ff4eaefa
 ```
 
-Las comprobaciones de otras entregas están en `SHA256SUMS.txt`.
+Verificaciones efectuadas con PyBoy en modo DMG; las pruebas sobre consola física no están acreditadas.
 
-## Créditos y licencias
+## Autoría y licencias
 
-**Autor y copyright: © 2026 Tony C. Ware.** Adaptación y documentación desarrolladas con asistencia de OpenAI Codex (ASTRA). La carátula oficial se incorpora **sin redibujar**. Código y herramientas bajo [MIT](LICENSE), con [traducción de cortesía](LICENSE_ES.md). **Sprites, ilustraciones, portada, logo y recursos artísticos no están cubiertos por MIT**: consultar [licencia gráfica](LICENCIA_GRAFICOS.md).
-
-Los títulos de Nintendo, Game Boy y otros clásicos mencionados como referencia pertenecen a sus respectivos titulares.
+**© 2026 Tony C. Ware.** Desarrollo y documentación con asistencia de herramientas de IA (OpenAI Codex / ASTRA). Código y herramientas bajo [MIT](LICENSE). La [licencia artística](LICENCIA_GRAFICOS.md) protege separadamente portada, sprites, logo, fondos y recursos visuales. Proyecto independiente y no oficial, sin afiliación con Nintendo.

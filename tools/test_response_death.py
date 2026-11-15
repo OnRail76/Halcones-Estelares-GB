@@ -23,6 +23,9 @@ tick(300);p.button_press('start');tick(4);p.button_release('start');until(lambda
 latency=[];visible=[]
 for trial in range(24):
  w('invulnerable',255);clear();tick(4)
+ # Keep the muzzle clear: an immediate hit can consume a valid laser before OAM.
+ for i in range(10):
+  if p.memory[sym['foes']+i*5+1]>65:p.memory[sym['foes']+i*5+1]=20
  if trial>=12:
   for name in ('score','record'):p.memory[sym[name]:sym[name]+4]=list((10000+trial*10).to_bytes(4,'little'))
   tick(trial%3)

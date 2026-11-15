@@ -4,7 +4,7 @@ import wave,json
 import numpy as np
 from pyboy import PyBoy
 R=Path(__file__).resolve().parents[1];out=R/'audio';out.mkdir(exist_ok=True)
-p=PyBoy(str(R/'Halcones-Estelares-GB.gb'),window='null',sound_emulated=True);p.set_emulation_speed(0)
+p=PyBoy(str(R/'rom/Halcones-Estelares-GB-0.16.gb'),window='null',sound_emulated=True);p.set_emulation_speed(0)
 sym={}
 for line in (R/'Halcones-Estelares-GB.noi').read_text().splitlines():
  a=line.split()
