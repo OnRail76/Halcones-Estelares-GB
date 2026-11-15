@@ -1,0 +1,16 @@
+# Game Boy GBDK generated outputs
+/Halcones-Estelares-GB.gb
+/Halcones-Estelares-GB.map
+/Halcones-Estelares-GB.noi
+src/*.asm
+src/*.lst
+src/*.rel
+src/*.sym
+src/*.map
+src/*.noi
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+*.swp
+*~
