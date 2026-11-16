@@ -16,8 +16,9 @@ def write(p,s):
 def edit(p,subs):
     s=read(p)
     for old,new in subs:
+        if new in s: continue
         if old in s: s=s.replace(old,new)
-        elif new not in s: raise RuntimeError(f"No se encuentra texto en {p}: {old[:90]}")
+        else: raise RuntimeError(f"No se encuentra texto en {p}: {old[:90]}")
     write(p,s)
 
 # La ROM nunca se recompila: se aplican exactamente los 57 bytes aprobados.
