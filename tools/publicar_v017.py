@@ -80,7 +80,8 @@ edit("tools/build_documents.py",[
 if not (R/"docs/Manual-ilustrado-GB-0.17.pdf").exists():
     subprocess.run([sys.executable,"tools/build_documents.py"],cwd=R,check=True)
     for name in ("Manual-ilustrado-GB-0.17.pdf","Atlas-y-memoria-GB-0.17.pdf"):
-        shutil.copy2(R/"documentacion"/name,R/"docs"/name)
+        if not (R/"docs"/name).exists():
+            shutil.copy2(R/"documentacion"/name,R/"docs"/name)
 
 # Referencias de la edición principal.
 edit("README.md",[
