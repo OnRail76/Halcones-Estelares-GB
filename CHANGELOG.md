@@ -1,5 +1,11 @@
 # Registro de versiones — Halcones Estelares GB
 
+## v0.17 · 16 noviembre 2026
+
+- **Cambios: Sonido del disparo del ESF-01 mas adecuado a su origen en ZX Spectrum**
+- Disparo «pff» de ruido seco, sin pitido tonal. ROM exacta aprobada por el autor.
+- Gráficos, músicas y mecánicas sin cambios.
+
 ## v0.16 · 15 noviembre 2026
 
 - CROW de invasión: retirada gradual, reagrupación y reanudación del ataque sin recuperar las bajas.
@@ -19,4 +25,4 @@
 
 - Fondo cósmico estático, Eurodance en título, un solo tema de combate y tonadilla al terminar.
 
-El historial técnico de diseño figura en LEEME.md y en el atlas de la edición 0.16.
+El historial técnico de diseño figura en LEEME.md y en el atlas de las ediciones 0.16 y 0.17.

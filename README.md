@@ -2,7 +2,7 @@
 
 ![Carátula oficial de Halcones Estelares GB](portada/Halcones_Estelares_GB_Caratula_Oficial.png)
 
-**Versión 0.16 · Game Boy clásica (DMG) · © 2026 Tony C. Ware**
+**Versión 0.17 · Game Boy clásica (DMG) · © 2026 Tony C. Ware**
 
 *Arcade de pájaros espaciales portátil.* Adaptación nativa de **Halcones Estelares 1.3.3** para ZX Spectrum 48K. No es un emulador del Spectrum: es código para Game Boy, desarrollado con GBDK 4.4.
 
@@ -18,7 +18,7 @@ Pero en el vacío sideral esperan **aves cósmicas que solo quieren invadir, des
 
 ## Jugar
 
-[**ROM oficial 0.16**](rom/Halcones-Estelares-GB-0.16.gb) · 32 KiB, sin MBC ni SRAM. Compatible con emuladores de Game Boy clásica y cartuchos flash compatibles. El récord se pierde al apagar.
+[**ROM oficial 0.17**](rom/Halcones-Estelares-GB-0.17.gb) · 32 KiB, sin MBC ni SRAM. Compatible con emuladores de Game Boy clásica y cartuchos flash compatibles. El récord se pierde al apagar.
 
 | Botón | Función |
 |---|---|
@@ -28,6 +28,11 @@ Pero en el vacío sideral esperan **aves cósmicas que solo quieren invadir, des
 | START | Comenzar / pausar / reanudar |
 
 Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 píxeles y campo de juego de 112 × 144.
+
+## Novedades 0.17
+
+- **Cambios: Sonido del disparo del ESF-01 mas adecuado a su origen en ZX Spectrum**
+- Efecto de disparo «pff» corto, seco y sin pitido; canal 4 de ruido de Game Boy. El resto de la 0.16 se conserva.
 
 ## Novedades 0.15–0.16
 
@@ -44,8 +49,8 @@ Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 
 
 ## Documentación y recursos auténticos
 
-- [Manual ilustrado 0.16](docs/Manual-ilustrado-GB-0.16.pdf) — 9 páginas.
-- [Atlas visual y memoria 0.16](docs/Atlas-y-memoria-GB-0.16.pdf) — 12 páginas.
+- [Manual ilustrado 0.17](docs/Manual-ilustrado-GB-0.17.pdf) — 9 páginas.
+- [Atlas visual y memoria 0.17](docs/Atlas-y-memoria-GB-0.17.pdf) — 12 páginas.
 - [Carátula oficial original](portada/Halcones_Estelares_GB_Caratula_Oficial.png).
 - [Capturas y animaciones de la ROM](capturas/), incluyendo CROW, invasión, reagrupación y MOAI con seis refuerzos. Algunas escenas están preparadas en RAM para comprobaciones; no son mockups.
 - [Memoria técnica detallada](LEEME.md), [historial de cambios](CHANGELOG.md) y [pruebas](PRUEBAS.txt).
@@ -63,7 +68,7 @@ El binario generado estará en la raíz `Halcones-Estelares-GB.gb`. La ROM publi
 **ROM oficial SHA-256:**
 
 ```text
-2156d5293d321d1579201830a97c0dc544ad911d703237c109e8d149ff4eaefa
+e263b5fa77a78e483857f3d200a35cd81f5bd2053db0172575ce12403af07e8c
 ```
 
 Verificaciones efectuadas con PyBoy en modo DMG; las pruebas sobre consola física no están acreditadas.

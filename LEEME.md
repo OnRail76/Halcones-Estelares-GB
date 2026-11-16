@@ -1,4 +1,4 @@
-# Halcones Estelares — Game Boy 0.16
+# Halcones Estelares — Game Boy 0.17
 
 Adaptación nativa para Game Boy clásica (DMG) del juego de Tony C. Ware.
 Referencia comprobada: el TAP **HALCONES_ESTELARES_1_3_3.tap** adjuntado por el
@@ -9,6 +9,12 @@ SHA-256: `0db551592d01900287f0dad4754b840589075fb50ae3e7405ea66dbf21266ddf`.
 ## Argumento y música
 
 La historia original completa figura en [HISTORIA.md](HISTORIA.md). Las grabaciones actuales se identifican como **Eurodance noventero**, **Tecno oscuro 1** y **Tonadilla de Game Over**; consultar [BANDA_SONORA.md](BANDA_SONORA.md).
+
+## Novedades 0.17 — disparo ESF-01
+
+**Cambios: Sonido del disparo del ESF-01 mas adecuado a su origen en ZX Spectrum**
+
+Ahora la ESF-01 produce un «pff» breve de ruido (canal 4, 31 ms), en homenaje al beeper ZX Spectrum. El autor escuchó y aprobó la ROM de prueba, publicada sin cambiar ningún byte de su código máquina. No se alteran melodías, gráficos ni mecánicas. Los WAV incluidos son capturas históricas de la 0.16, no del nuevo disparo.
 
 ## Novedades 0.16 — retirada CROW y MOAI reforzado
 
@@ -156,8 +162,8 @@ el título queda sustituida: el título usa Eurodance noventero. Las partidas
 usan únicamente **tecno oscuro 1**, a unos 132 BPM, sin alternar canciones.
 Se conserva la tonadilla de Game Over.
 
-Los efectos dejan de imitar el beeper: usan timbres nativos GB, breves y pulidos.
-Disparo con caída de tono, impactos cortos, explosión de ruido escalonada y
+El disparo de 0.17 recupera el carácter del beeper: «pff» seco en canal de ruido 4. Los demás efectos conservan sus timbres nativos de Game Boy.
+Impactos cortos, explosión de ruido escalonada y
 arpegios suaves para escudo, recarga y vida extra. Son composiciones originales;
 no se han extraído sonidos de otros juegos. El láser responde inmediatamente.
 
@@ -254,7 +260,7 @@ los gráficos y sus conversiones conservan sus derechos, según `LICENCIA_GRAFIC
 
 El disparo deja de esperar al paso de las oleadas. Cada pulsación de A crea un
 proyectil: desde la 0.8, si los dos huecos están ocupados, sustituye al láser
-más adelantado en lugar de descartar la pulsación, con sonido inmediato en el canal de efectos tonales. Se conservan dos proyectiles simultáneos. Nacen por delante
+más adelantado en lugar de descartar la pulsación, con sonido inmediato de ruido en el canal 4. Se conservan dos proyectiles simultáneos. Nacen por delante
 del morro y avanzan cinco píxeles por fotograma (antes eran cuatro por paso de
 oleada). Esto reduce la ocupación de los dos huecos y permite disparar con mayor
 frecuencia. La colisión comprueba el recorrido vertical para no saltarse aves.
