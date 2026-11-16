@@ -9,6 +9,8 @@ La nave ESF-01 sustituye su pitido agudo de disparo por un «pff» muy corto, se
 - Se publica exactamente la ROM de la prueba aprobada por Tony C. Ware, **sin alterar un solo byte**.
 - El resto del juego permanece como en la v0.16: gráficos, música, controles, patrones, enemigos y jugabilidad.
 
+**Compatibilidad:** Game Boy clásica (DMG), ROM de 32 KiB sin MBC ni SRAM.
+
 ## Contenido
 
 - ROM **Halcones-Estelares-GB-0.17.gb** (32 KiB).
