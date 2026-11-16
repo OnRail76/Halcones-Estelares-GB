@@ -19,6 +19,8 @@ La nave ESF-01 sustituye su pitido agudo de disparo por un «pff» muy corto, se
 - **Halcones_Estelares_GB_Caratula_Oficial.png** (carátula original).
 - **Halcones-Estelares-GameBoy-0.17.zip** (fuentes, ROM, recursos y documentación).
 
+La publicación conserva la carátula oficial y la historia del proyecto, con código y documentación disponibles en el repositorio.
+
 **SHA-256 ROM v0.17:** e263b5fa77a78e483857f3d200a35cd81f5bd2053db0172575ce12403af07e8c
 
 © 2026 Tony C. Ware. Proyecto independiente para Game Boy clásica. Desarrollo y documentación con asistencia de herramientas de IA.
