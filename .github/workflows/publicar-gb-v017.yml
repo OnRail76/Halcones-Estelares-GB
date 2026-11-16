@@ -66,4 +66,4 @@ jobs:
             name=$(basename "$file")
             gh release view v0.17 --json assets --jq '.assets[].name' | grep -Fxq "$name" || { echo "Falta $name"; exit 1; }
           done
-          gh release view v0.17 --json name,isLatest,url,assets --jq '{name,isLatest,url,assets:[.assets[].name]}'
+          gh release view v0.17 --json name,url,assets --jq '{name,url,assets:[.assets[].name]}'
