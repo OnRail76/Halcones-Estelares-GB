@@ -1,69 +1,37 @@
-name: Publicar Halcones Estelares GB v0.17
-
+# Verificación exclusiva de ROM y materiales oficiales de 0.17. Nunca republica releases ni escribe en main.
+name: Verificar Halcones Estelares GB v0.17
 on:
   push:
     branches: [main]
     paths:
-      - "RELEASE_NOTES_v0.17.md"
+      - '.github/workflows/publicar-gb-v017.yml'
+      - 'rom/**'
+      - 'src/**'
+      - 'docs/**'
+      - 'portada/**'
+      - 'SHA256SUMS.txt'
+      - 'Makefile'
+  pull_request:
+    paths:
+      - '.github/workflows/publicar-gb-v017.yml'
+      - 'rom/**'
+      - 'src/**'
+      - 'docs/**'
+      - 'portada/**'
+      - 'SHA256SUMS.txt'
+      - 'Makefile'
   workflow_dispatch:
-
 permissions:
-  contents: write
-
-concurrency:
-  group: halcones-estelares-gb-v017
-  cancel-in-progress: false
-
+  contents: read
 jobs:
-  release:
+  verificar:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Dependencias para reconstruir manual y atlas reales
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y fonts-dejavu-core
-          python -m pip install "reportlab==4.4.9" "pillow==12.3.0"
-      - name: Preparar ROM exacta, fuentes y documentos GB 0.17
-        run: python tools/publicar_v017.py
-      - name: Verificar ROM, portada y PDF con sus huellas SHA-256
+      - name: Verificar integridad de ROM 0.17 y materiales vigentes
         run: |
           set -euo pipefail
           sha256sum -c SHA256SUMS.txt
           echo "e263b5fa77a78e483857f3d200a35cd81f5bd2053db0172575ce12403af07e8c  rom/Halcones-Estelares-GB-0.17.gb" | sha256sum -c -
-      - name: Publicar fuentes y documentación de 0.17 en main
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- README.md CHANGELOG.md LEEME.md CAMBIOS_0.17.md SHA256.txt SHA256SUMS.txt VERIFICACION_PFF_RUIDO.json documentacion/VERIFICACION.json docs rom src/audio.h tools/build_documents.py
-          if ! git diff --cached --quiet; then
-            git commit -m "Publicar Halcones Estelares GB 0.17: nuevo PFF de la ESF-01"
-            git push origin HEAD:main
-          fi
-      - name: Crear Release v0.17 y adjuntar los materiales
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-          sha256sum -c SHA256SUMS.txt
-          if gh release view v0.17 >/dev/null 2>&1; then
-            gh release upload v0.17 dist/* --clobber
-            gh release edit v0.17 --title "Halcones Estelares GB — v0.17" --notes-file RELEASE_NOTES_v0.17.md --latest
-          else
-            gh release create v0.17 dist/* --target "$(git rev-parse HEAD)" --title "Halcones Estelares GB — v0.17" --notes-file RELEASE_NOTES_v0.17.md --latest
-          fi
-          for file in dist/*; do
-            name=$(basename "$file")
-            gh release view v0.17 --json assets --jq '.assets[].name' | grep -Fxq "$name" || { echo "Falta $name"; exit 1; }
-          done
-          gh release view v0.17 --json name,url,assets --jq '{name,url,assets:[.assets[].name]}'
+          test -f src/main.c
+          test -f Makefile

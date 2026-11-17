@@ -53,7 +53,7 @@ Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 
 - [Atlas visual y memoria 0.17](docs/Atlas-y-memoria-GB-0.17.pdf) — 12 páginas.
 - [Carátula oficial original](portada/Halcones_Estelares_GB_Caratula_Oficial.png).
 - [Capturas y animaciones de la ROM](capturas/), incluyendo CROW, invasión, reagrupación y MOAI con seis refuerzos. Algunas escenas están preparadas en RAM para comprobaciones; no son mockups.
-- [Memoria técnica detallada](LEEME.md), [historial de cambios](CHANGELOG.md) y [pruebas](PRUEBAS.txt).
+- [Memoria técnica detallada](LEEME.md), [historial de cambios](CHANGELOG.md) y [herramientas de prueba](tools/).
 
 ## Compilación
 
