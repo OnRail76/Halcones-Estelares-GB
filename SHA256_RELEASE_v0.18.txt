@@ -1,5 +1,0 @@
-f43978a8a1f458632f74f568a7d89e74cfdc73956a5adbfd021e43e6da1b499d  Atlas-y-memoria-GB-0.18.pdf
-a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393  Halcones-Estelares-GB-0.18.gb
-281051dccd984825f402f51051793a6105d6ccc6b1e9183caf3674643bd62d8d  Halcones-Estelares-GameBoy-0.18.zip
-bdcd39cf34b4eaa6f874a7c5b7d498244ae35bc82fac89f74fe0126cd21866a9  Halcones_Estelares_GB_Caratula_Oficial.png
-b2dc9c9ab72aa0e1048cee4696e08b63b0c07cb3aefdb7d2dde8a7889d5d12a3  Manual-ilustrado-GB-0.18.pdf
