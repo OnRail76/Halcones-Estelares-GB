@@ -1,15 +1,11 @@
-# Licencia de los recursos gráficos — HALCONES ESTELARES
+# Licencia de los recursos artísticos — Halcones Estelares GB
 
-**© 2026 Tony C. Ware. Todos los derechos reservados sobre el material artístico, salvo autorización expresa.**
+**© 2026 Tony C. Ware. Derechos reservados sobre el material artístico, salvo autorización expresa y sin perjuicio de derechos de terceros.**
 
-Las licencias [MIT en inglés](LICENSE) y [MIT traducida al castellano](LICENSE_ES.md) se aplican al **código fuente y a las herramientas de desarrollo** del proyecto, no al arte que acompaña a ese código.
+La [licencia MIT](LICENSE) se aplica al **código fuente y las herramientas**, **no** a los recursos artísticos del proyecto.
 
-Quedan **fuera de la licencia MIT** las carátulas oficial y alternativas, ilustraciones, logotipos y marcas (incluido el logotipo Tony C. Ware), sprites, fondos, imágenes, gráficos de interfaz, capturas, material visual incluido en manuales y atlas, y representaciones de esos gráficos contenidas en el ejecutable.
+Quedan fuera de MIT las carátulas e ilustraciones, logotipos y marcas (incluido «Tony C. Ware»), sprites, fondos, gráficos de interfaz, capturas, imágenes de los manuales y atlas, y representaciones de estos recursos en la ROM.
 
-Se permite descargar y jugar a la versión oficial para **uso personal** y consultar la documentación publicada. La reutilización, extracción, modificación, publicación o explotación de los recursos artísticos en otros proyectos requiere autorización expresa del titular de los derechos correspondientes.
+**Se permite descargar y jugar a la edición oficial para uso personal y consultar su documentación.** La reutilización, extracción, modificación o redistribución del arte en otros proyectos requiere autorización expresa de quien tenga los derechos correspondientes. Quien reutilice el código MIT deberá conservar sus avisos e incorporar arte propio o autorizado.
 
-Quien reutilice código bajo MIT debe mantener sus avisos de licencia y utilizar material gráfico propio o debidamente autorizado si distribuye una obra que incluya recursos visuales.
-
-La publicación del repositorio no concede derechos sobre marcas ni materiales de terceros. El copyright del código y las herramientas figura en [LICENSE](LICENSE).
-
-Fondos cósmicos 0.14: arte nuevo generado con OpenAI y convertido a dos tonos para GB; no procede del ZX original.
+La publicación del repositorio no concede licencias sobre marcas ni derechos de terceros. Parte de los fondos cósmicos se generó con asistencia de OpenAI y se adaptó al formato de Game Boy.
