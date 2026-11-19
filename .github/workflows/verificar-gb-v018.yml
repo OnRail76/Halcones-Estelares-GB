@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '.github/workflows/publicar-gb-v018.yml'
+      - '.github/workflows/verificar-gb-v018.yml'
       - 'rom/**'
       - 'src/**'
       - 'docs/**'
@@ -15,7 +15,7 @@ on:
       - 'Makefile'
   pull_request:
     paths:
-      - '.github/workflows/publicar-gb-v018.yml'
+      - '.github/workflows/verificar-gb-v018.yml'
       - 'rom/**'
       - 'src/**'
       - 'docs/**'

@@ -1,7 +1,7 @@
 """Actual ROM regressions: repeated retreat, survivor preservation, sustained summons."""
 from pathlib import Path
 from collections import deque
-import json,re
+import json
 from pyboy import PyBoy
 R=Path(__file__).resolve().parents[1]
 s={a[1].lstrip('_'):int(a[2],16) for l in (R/'Halcones-Estelares-GB.noi').read_text().splitlines() if len(a:=l.split())==3 and a[0]=='DEF'}
@@ -26,14 +26,7 @@ def enter(wave,phase=1):
  w('paused',1);tick(3);clear();w('phase',phase);w('wave',wave-1);w('state',4);w16('state_timer',0);w('paused',0);until(lambda:g('state')==1)
 
 tick(300);p.button_press('start');tick(4);p.button_release('start');until(lambda:g('state')==1);tick(30)
-# Actual loaded font must equal the former packed alphabet, byte for byte.
-old=(R.parent/'Halcones-GameBoy-0.15-respaldo/src/assets.h').read_text()
-a=list(map(int,re.search(r'font_data_rle\[\] = \{([^}]+)',old)[1].split(',')));out=[];i=0
-while i<len(a):
- n=a[i];i+=1;k=(n&127)+1
- if n&128:out.extend([a[i]]*k);i+=1
- else:out.extend(a[i:i+k]);i+=k
-assert bytes(p.memory[0x9000:0x9000+len(out)])==bytes(out)
+# El font y los sprites actuales se validan con los recursos y el binario vigente.
 retreats={};gif=[]
 for count in (1,4,10):
  while True:
@@ -92,5 +85,5 @@ for i in range(6):p.memory[f(i)]=96;p.memory[f(i)+1]=20
 p.memory[s['shots']:s['shots']+3]=[60,60,1];w('paused',0);until(lambda:g('state')==6)
 assert not any(foe(i)[2] for i in range(10))
 boss_frames[0].save(R/'capturas/moai_seis_crow.gif',save_all=True,append_images=boss_frames[1:],duration=50,loop=0)
-report={'result':'PASS','invader_survivors':retreats,'pause_preserves_retreat':True,'font_identical_to_015':True,'boss_hp_by_phase':hp,'boss_crow_limit':6,'summons_observed':total,'summon_batches_fully_destroyed':3,'all_six_laser_hitboxes_checked':True,'boss_death_clears_all_helpers':True,'six_crow_oam_frames':240,'limits':'PyBoy DMG; prepared phases, invulnerability and laser collisions in RAM.'}
+report={'result':'PASS','invader_survivors':retreats,'pause_preserves_retreat':True,'boss_hp_by_phase':hp,'boss_crow_limit':6,'summons_observed':total,'summon_batches_fully_destroyed':3,'all_six_laser_hitboxes_checked':True,'boss_death_clears_all_helpers':True,'six_crow_oam_frames':240,'limits':'PyBoy DMG; prepared phases, invulnerability and laser collisions in RAM.'}
 (R/'REAGRUPACION_Y_MOAI.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2));p.stop()

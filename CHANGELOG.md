@@ -1,34 +1,12 @@
-# Registro de versiones — Halcones Estelares GB
+# Halcones Estelares GB — Edición Final v0.18
 
-## v0.18 · 19 noviembre 2026 — edición final Cañón de Plasma
+**19 de noviembre de 2026 · Cañón de Plasma**
 
-- **Cañón de Plasma: nuevo sonido de disparo comprimido de la ESF-01, chasquido eléctrico seguido de soplido seco.**
-- Dos fases solo en el canal 4 de ruido (chasquido brillante y soplido grave).
-- ROM exactamente igual a la variante experimental aprobada. El resto de 0.17 se conserva.
+- Disparo definitivo de la ESF-01: un chasquido eléctrico seguido de un soplido grave y seco.
+- Dos etapas de ruido en el canal 4 de Game Boy; sin pitido tonal.
+- Se distribuye la ROM exacta aprobada por el autor.
+- Siete patrones de oleadas, MOAI con refuerzos, gráficos, música, controles y jugabilidad vigentes.
 
-## v0.17 · 16 noviembre 2026
+**SHA-256 ROM oficial:** `a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393`.
 
-- **Cambios: Sonido del disparo del ESF-01 mas adecuado a su origen en ZX Spectrum**
-- Disparo «pff» de ruido seco, sin pitido tonal. ROM exacta aprobada por el autor.
-- Gráficos, músicas y mecánicas sin cambios.
-
-## v0.16 · 15 noviembre 2026
-
-- CROW de invasión: retirada gradual, reagrupación y reanudación del ataque sin recuperar las bajas.
-- MOAI MONOLITH reforzado: 48 impactos de resistencia inicial, aumenta hasta 128. Repone hasta seis CROW simultáneos durante toda la batalla.
-- Capturas y pruebas de la nueva invasión, reagrupación, seis CROW y cuatro ataques.
-- Portada oficial y dos documentos PDF de la edición 0.16; relato original incorporado en HISTORIA.md.
-- Banda sonora con los nombres descritos en el manual: Eurodance noventero, Tecno oscuro 1 y Tonadilla de Game Over. Eliminadas grabaciones musicales antiguas.
-- Eliminados ficheros generados de depuración y materiales duplicados; código bajo MIT, arte con licencia específica.
-
-## v0.15 · 15 noviembre 2026 (cambios integrados en v0.16)
-
-- Siete coreografías: nuevo patrón colectivo CROW tipo Space Invaders.
-- Oleadas mixtas de grandes y CROW; refuerzos por bajas de enemigos grandes.
-- Generador de selección con LFSR de 16 bits.
-
-## v0.14 (sustituida)
-
-- Fondo cósmico estático, Eurodance en título, un solo tema de combate y tonadilla al terminar.
-
-El historial técnico de diseño figura en LEEME.md y en el atlas actualizado de 0.18; 0.16 y 0.17 quedan en el historial.
+No se mantienen versiones anteriores como Releases descargables.

@@ -1,4 +1,4 @@
-"""Build illustrated A5 PDFs from project assets and verified release 0.16."""
+"""Build illustrated A5 PDFs from project assets and official v0.18 release."""
 from pathlib import Path
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor

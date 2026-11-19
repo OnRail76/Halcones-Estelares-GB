@@ -29,26 +29,11 @@ Pero en el vacío sideral esperan **aves cósmicas que solo quieren invadir, des
 
 Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 píxeles y campo de juego de 112 × 144.
 
-## Novedades 0.18 — Cañón de Plasma definitivo
+## Edición definitiva — Cañón de Plasma
 
-- **Cañón de Plasma: nuevo sonido de disparo comprimido de la ESF-01, chasquido eléctrico seguido de soplido seco.**
-- Primero un chasquido de ruido brillante y luego un soplido más grave y apagado, sin pitido agudo.
-- Se conserva **byte por byte** la ROM experimental «Plasma PTCH» aprobada por Tony C. Ware.
-- Música, gráficos, patrones de oleadas, controles y jugabilidad de la v0.17 intactos.
+El disparo de la **ESF-01** utiliza dos etapas de ruido en el canal 4: un chasquido eléctrico corto y un soplido grave y seco. No contiene el antiguo pitido agudo. La ROM que se distribuye es byte por byte idéntica a la aprobada por el autor.
 
-## Novedades 0.17
-
-- **Cambios: Sonido del disparo del ESF-01 mas adecuado a su origen en ZX Spectrum**
-- Efecto de disparo «pff» corto, seco y sin pitido; canal 4 de ruido de Game Boy. El resto de la 0.16 se conserva.
-
-## Novedades 0.15–0.16
-
-- **Siete patrones de oleada**, incluido el asalto colectivo CROW inspirado en Space Invaders.
-- **Oleadas mixtas**: cazadores o kamikazes acompañados de CROW, con hasta cuatro refuerzos extra en situaciones concretas.
-- **Invasión CROW que se retira y reagrupa** tras llegar a la parte baja, conservando las bajas.
-- **MOAI MONOLITH reforzado:** 48 impactos iniciales, +8 por fase hasta 128; invoca hasta seis CROW simultáneos y repone sus bajas hasta su destrucción.
-- Generador pseudoaleatorio LFSR de 16 bits para mayor variedad de partidas.
-- Se mantienen música, controles, escudo y gráficos de la edición vigente; ROM de **32 KiB**.
+El juego incluye siete patrones de oleadas, formaciones mixtas, ataques de CROW que se retiran y reagrupan, y el jefe MOAI MONOLITH con resistencia progresiva e invocación de refuerzos. Se conservan sus músicas, controles, escudo, gráficos y mecánicas originales.
 
 ## Banda sonora original
 
@@ -60,7 +45,7 @@ Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 
 - [Atlas visual y memoria 0.18](docs/Atlas-y-memoria-GB-0.18.pdf) — 12 páginas.
 - [Carátula oficial original](portada/Halcones_Estelares_GB_Caratula_Oficial.png).
 - [Capturas y animaciones de la ROM](capturas/), incluyendo CROW, invasión, reagrupación y MOAI con seis refuerzos. Algunas escenas están preparadas en RAM para comprobaciones; no son mockups.
-- [Memoria técnica detallada](LEEME.md), [historial de cambios](CHANGELOG.md) y [herramientas de prueba](tools/).
+- [Memoria técnica detallada](LEEME.md), [nota de la edición](CHANGELOG.md) y [herramientas de prueba](tools/).
 
 ## Compilación
 

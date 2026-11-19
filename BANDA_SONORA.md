@@ -1,13 +1,15 @@
-# Banda sonora — Game Boy 0.16
+# Banda sonora — Halcones Estelares GB v0.18
 
-Las tres piezas vigentes se identifican por las denominaciones consignadas en la documentación de la versión 0.16:
+Las tres composiciones musicales que utiliza la edición definitiva son:
 
-| Momento del juego | Título | Archivo de audio capturado de la ROM |
+| Escena | Tema | Grabación WAV |
 |---|---|---|
-| Pantalla de título | **Eurodance noventero** | [Eurodance noventero.wav](audio/Eurodance%20noventero.wav) |
-| Partida (siete oleadas) | **Tecno oscuro 1** | [Tecno oscuro 1.wav](audio/Tecno%20oscuro%201.wav) |
-| Final de partida | **Tonadilla de Game Over** | [Tonadilla de Game Over.wav](audio/Tonadilla%20de%20Game%20Over.wav) |
+| Título | **Eurodance noventero** | [Eurodance noventero](audio/Eurodance%20noventero.wav) |
+| Combate | **Tecno oscuro 1** | [Tecno oscuro 1](audio/Tecno%20oscuro%201.wav) |
+| Game Over | **Tonadilla de Game Over** | [Tonadilla de Game Over](audio/Tonadilla%20de%20Game%20Over.wav) |
 
-Las grabaciones WAV son capturas de la APU de Game Boy en PyBoy, no música añadida a la ROM. Los efectos están en [efectos-gb.wav](audio/efectos-gb.wav).
+Son capturas de la salida de audio de Game Boy, no pistas añadidas al cartucho. Las melodías no han cambiado en la edición final.
 
-**No se distribuyen piezas descartadas ni un directorio de audio histórico.** El audio integrado en el binario oficial no se ha alterado. © 2026 Tony C. Ware.
+El **Cañón de Plasma** forma parte de la propia ROM y no se acompaña de una grabación anterior e incorrecta del disparo.
+
+© 2026 Tony C. Ware.

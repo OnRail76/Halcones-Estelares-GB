@@ -22,6 +22,6 @@ La nueva versión definitiva incorpora el **Cañón de Plasma** de la nave **ESF
 
 **SHA-256 de la ROM:** a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393
 
-El material anterior permanece accesible en las etiquetas y Releases históricas. La rama principal muestra solo la edición vigente v0.18.
+La **v0.18 es la única Release y la única etiqueta de versión vigente**. El repositorio público contiene la ROM aprobada, su código, los documentos y recursos actuales.
 
 © 2026 Tony C. Ware. Proyecto independiente, sin afiliación con Nintendo. El código conserva su licencia MIT y el arte su licencia específica.

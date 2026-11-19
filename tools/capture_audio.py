@@ -1,10 +1,10 @@
-"""Capture real DMG APU output from the ROM; no external audio mixed in."""
+"""Capture actual DMG APU output from the v0.18 ROM (requires GBDK symbols)."""
 from pathlib import Path
 import wave,json
 import numpy as np
 from pyboy import PyBoy
 R=Path(__file__).resolve().parents[1];out=R/'audio';out.mkdir(exist_ok=True)
-p=PyBoy(str(R/'rom/Halcones-Estelares-GB-0.16.gb'),window='null',sound_emulated=True);p.set_emulation_speed(0)
+p=PyBoy(str(R/'rom/Halcones-Estelares-GB-0.18.gb'),window='null',sound_emulated=True);p.set_emulation_speed(0)
 sym={}
 for line in (R/'Halcones-Estelares-GB.noi').read_text().splitlines():
  a=line.split()
