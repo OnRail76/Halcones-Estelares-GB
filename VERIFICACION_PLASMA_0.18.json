@@ -1,0 +1,14 @@
+{
+  "version": "0.18",
+  "rom_sha256": "a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393",
+  "rom_original_0_17_sha256": "e263b5fa77a78e483857f3d200a35cd81f5bd2053db0172575ce12403af07e8c",
+  "disparo": "Cañón de Plasma PTCH",
+  "canal": "4 - ruido",
+  "fases": [
+    "chasquido eléctrico, aproximadamente un VBlank",
+    "soplido grave, aproximadamente 27 ms"
+  ],
+  "aprobado_por_el_autor": true,
+  "rom_identica_a_experimento": true,
+  "otras_mecanicas_conservadas": true
+}

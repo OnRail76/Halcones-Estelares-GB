@@ -1,4 +1,4 @@
-# Halcones Estelares — Game Boy 0.17
+# Halcones Estelares — Game Boy 0.18
 
 Adaptación nativa para Game Boy clásica (DMG) del juego de Tony C. Ware.
 Referencia comprobada: el TAP **HALCONES_ESTELARES_1_3_3.tap** adjuntado por el
@@ -9,6 +9,14 @@ SHA-256: `0db551592d01900287f0dad4754b840589075fb50ae3e7405ea66dbf21266ddf`.
 ## Argumento y música
 
 La historia original completa figura en [HISTORIA.md](HISTORIA.md). Las grabaciones actuales se identifican como **Eurodance noventero**, **Tecno oscuro 1** y **Tonadilla de Game Over**; consultar [BANDA_SONORA.md](BANDA_SONORA.md).
+
+## Novedades 0.18 — Cañón de Plasma definitivo
+
+**Cañón de Plasma: nuevo sonido de disparo comprimido de la ESF-01, chasquido eléctrico seguido de soplido seco.**
+
+El disparo ahora tiene dos fases de ruido pseudoaleatorio: chasquido brillante durante aproximadamente un fotograma (16,7 ms) y cola más grave y tenue de unos 27 ms. No se utiliza un tono de pulso para el disparo. El cambio se realiza con una nueva transición sincronizada con VBlank.
+
+La ROM es idéntica a la prueba «Plasma PTCH» que escuchó y aprobó el autor (SHA-256 a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393). Se mantienen exactamente los gráficos, las melodías y la jugabilidad de 0.17. Los WAV que ya había en audio/ son capturas históricas, no un registro del disparo 0.18.
 
 ## Novedades 0.17 — disparo ESF-01
 

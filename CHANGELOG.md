@@ -1,5 +1,11 @@
 # Registro de versiones — Halcones Estelares GB
 
+## v0.18 · 19 noviembre 2026 — edición final Cañón de Plasma
+
+- **Cañón de Plasma: nuevo sonido de disparo comprimido de la ESF-01, chasquido eléctrico seguido de soplido seco.**
+- Dos fases solo en el canal 4 de ruido (chasquido brillante y soplido grave).
+- ROM exactamente igual a la variante experimental aprobada. El resto de 0.17 se conserva.
+
 ## v0.17 · 16 noviembre 2026
 
 - **Cambios: Sonido del disparo del ESF-01 mas adecuado a su origen en ZX Spectrum**
@@ -25,4 +31,4 @@
 
 - Fondo cósmico estático, Eurodance en título, un solo tema de combate y tonadilla al terminar.
 
-El historial técnico de diseño figura en LEEME.md y en el atlas de las ediciones 0.16 y 0.17.
+El historial técnico de diseño figura en LEEME.md y en el atlas actualizado de 0.18; 0.16 y 0.17 quedan en el historial.

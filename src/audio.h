@@ -27,15 +27,13 @@ const uint16_t life_notes[4]={1825,1860,1899,1936};
 void audio_pulse(uint16_t f,uint8_t vol,uint8_t length){NR10_REG=0;NR11_REG=0x40|length;NR12_REG=vol;NR13_REG=f;NR14_REG=0xc0|(f>>8);}
 void audio_noise(uint8_t pitch,uint8_t vol,uint8_t length){NR41_REG=length;NR42_REG=vol;NR43_REG=pitch;NR44_REG=0xc0;}
 void sfx_start(uint8_t id){CRITICAL {if(!fx_id||fx_priority[id]>=fx_priority[fx_id]){fx_id=id;fx_index=0;fx_wait=0;}}}
-/* 0.17: disparo ESF-01, solo ruido canal 4, 31,25 ms.
-   Sin pulso, sin nota y sin barrido tonal. */
+/* 0.18: CAÑON DE PLASMA ESF-01. Dos etapas en canal de ruido 4.
+   Descarga inicial + soplido más grave al siguiente VBlank.
+   Ninguna nota ni oscilador tonal en el disparo. */
 void audio_fire_now(void){CRITICAL {
- NR12_REG=0x00;
- NR41_REG=0x38;
- NR42_REG=0xf1;
- NR43_REG=0x35;
- NR44_REG=0xc0;
- noise_hold=2;fire_voice=2;
+ NR12_REG=0x00; /* silenciar canal tonal anterior */
+ NR41_REG=0x39;NR42_REG=0xf1;NR43_REG=0x15;NR44_REG=0xc0;
+ noise_hold=0x83;fire_voice=2;
 }}
 void audio_stop_music(void){music_on=0;NR12_REG=0;NR22_REG=0;NR30_REG=0;NR42_REG=0;fx_id=0;fire_voice=0;noise_hold=0;BGP_REG=0x1b;NR50_REG=0x77;}
 void audio_over(void){audio_stop_music();over_note=0;over_clock=1;}
@@ -70,7 +68,11 @@ void audio_tick(void){uint16_t f;uint8_t k,duck;
  }
  if(state==TITLE && music_on){audio_trance_tick();return;}
  if(fire_voice)fire_voice--;
- if(noise_hold)noise_hold--;
+ if(noise_hold==0x83){
+   /* Fase 2: cola de plasma más suave y grave. */
+   NR41_REG=0x39;NR42_REG=0x61;NR43_REG=0x45;NR44_REG=0xc0;
+   noise_hold=3;
+  }else if(noise_hold)noise_hold--;
  duck=fx_id>=FX_EXPLODE;
  if(music_on){
   NR32_REG=state==DYING?0:0x60;
@@ -94,7 +96,7 @@ void audio_tick(void){uint16_t f;uint8_t k,duck;
  }
  if(!fx_id)return;
  if(fx_wait){fx_wait--;return;}
- /* A fresh laser is immediate; other pitched signals resume after its chirp. */
+ /* El disparo de plasma es inmediato; otros efectos tonales esperan su ataque. */
  if(fire_voice && (fx_id<=3||fx_id==FX_SHIELD||fx_id==FX_READY||fx_id==FX_LIFE))return;
  k=fx_index++;
  switch(fx_id){

@@ -2,7 +2,7 @@
 
 ![Carátula oficial de Halcones Estelares GB](portada/Halcones_Estelares_GB_Caratula_Oficial.png)
 
-**Versión 0.17 · Game Boy clásica (DMG) · © 2026 Tony C. Ware**
+**Versión 0.18 · Game Boy clásica (DMG) · © 2026 Tony C. Ware**
 
 *Arcade de pájaros espaciales portátil.* Adaptación nativa de **Halcones Estelares 1.3.3** para ZX Spectrum 48K. No es un emulador del Spectrum: es código para Game Boy, desarrollado con GBDK 4.4.
 
@@ -18,7 +18,7 @@ Pero en el vacío sideral esperan **aves cósmicas que solo quieren invadir, des
 
 ## Jugar
 
-[**ROM oficial 0.17**](rom/Halcones-Estelares-GB-0.17.gb) · 32 KiB, sin MBC ni SRAM. Compatible con emuladores de Game Boy clásica y cartuchos flash compatibles. El récord se pierde al apagar.
+[**ROM oficial 0.18**](rom/Halcones-Estelares-GB-0.18.gb) · 32 KiB, sin MBC ni SRAM. Compatible con emuladores de Game Boy clásica y cartuchos flash compatibles. El récord se pierde al apagar.
 
 | Botón | Función |
 |---|---|
@@ -28,6 +28,13 @@ Pero en el vacío sideral esperan **aves cósmicas que solo quieren invadir, des
 | START | Comenzar / pausar / reanudar |
 
 Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 píxeles y campo de juego de 112 × 144.
+
+## Novedades 0.18 — Cañón de Plasma definitivo
+
+- **Cañón de Plasma: nuevo sonido de disparo comprimido de la ESF-01, chasquido eléctrico seguido de soplido seco.**
+- Primero un chasquido de ruido brillante y luego un soplido más grave y apagado, sin pitido agudo.
+- Se conserva **byte por byte** la ROM experimental «Plasma PTCH» aprobada por Tony C. Ware.
+- Música, gráficos, patrones de oleadas, controles y jugabilidad de la v0.17 intactos.
 
 ## Novedades 0.17
 
@@ -49,8 +56,8 @@ Tres vidas iniciales. Dos disparos propios como máximo. Marcador lateral de 48 
 
 ## Documentación y recursos auténticos
 
-- [Manual ilustrado 0.17](docs/Manual-ilustrado-GB-0.17.pdf) — 9 páginas.
-- [Atlas visual y memoria 0.17](docs/Atlas-y-memoria-GB-0.17.pdf) — 12 páginas.
+- [Manual ilustrado 0.18](docs/Manual-ilustrado-GB-0.18.pdf) — 9 páginas.
+- [Atlas visual y memoria 0.18](docs/Atlas-y-memoria-GB-0.18.pdf) — 12 páginas.
 - [Carátula oficial original](portada/Halcones_Estelares_GB_Caratula_Oficial.png).
 - [Capturas y animaciones de la ROM](capturas/), incluyendo CROW, invasión, reagrupación y MOAI con seis refuerzos. Algunas escenas están preparadas en RAM para comprobaciones; no son mockups.
 - [Memoria técnica detallada](LEEME.md), [historial de cambios](CHANGELOG.md) y [herramientas de prueba](tools/).
@@ -68,7 +75,7 @@ El binario generado estará en la raíz `Halcones-Estelares-GB.gb`. La ROM publi
 **ROM oficial SHA-256:**
 
 ```text
-e263b5fa77a78e483857f3d200a35cd81f5bd2053db0172575ce12403af07e8c
+a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393
 ```
 
 Verificaciones efectuadas con PyBoy en modo DMG; las pruebas sobre consola física no están acreditadas.

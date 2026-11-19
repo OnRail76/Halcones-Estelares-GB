@@ -1,6 +1,6 @@
 {
-  "version": "0.17",
-  "rom_sha256": "e263b5fa77a78e483857f3d200a35cd81f5bd2053db0172575ce12403af07e8c",
-  "manual_sha256": "fb5511acdd400b9813c58558f68fa93bfa47f40c48edc2ef2b50ab44c495aa44",
-  "atlas_sha256": "902a4c4f0e3d794dd333c0c251d996c6fcfcee941fbca221ae6687349b0dd6bf"
+  "version": "0.18",
+  "rom_sha256": "a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393",
+  "manual_sha256": "b2dc9c9ab72aa0e1048cee4696e08b63b0c07cb3aefdb7d2dde8a7889d5d12a3",
+  "atlas_sha256": "f43978a8a1f458632f74f568a7d89e74cfdc73956a5adbfd021e43e6da1b499d"
 }

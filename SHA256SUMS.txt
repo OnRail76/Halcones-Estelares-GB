@@ -1,4 +1,4 @@
-e263b5fa77a78e483857f3d200a35cd81f5bd2053db0172575ce12403af07e8c  rom/Halcones-Estelares-GB-0.17.gb
-fb5511acdd400b9813c58558f68fa93bfa47f40c48edc2ef2b50ab44c495aa44  docs/Manual-ilustrado-GB-0.17.pdf
-902a4c4f0e3d794dd333c0c251d996c6fcfcee941fbca221ae6687349b0dd6bf  docs/Atlas-y-memoria-GB-0.17.pdf
+a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393  rom/Halcones-Estelares-GB-0.18.gb
+b2dc9c9ab72aa0e1048cee4696e08b63b0c07cb3aefdb7d2dde8a7889d5d12a3  docs/Manual-ilustrado-GB-0.18.pdf
+f43978a8a1f458632f74f568a7d89e74cfdc73956a5adbfd021e43e6da1b499d  docs/Atlas-y-memoria-GB-0.18.pdf
 bdcd39cf34b4eaa6f874a7c5b7d498244ae35bc82fac89f74fe0126cd21866a9  portada/Halcones_Estelares_GB_Caratula_Oficial.png
