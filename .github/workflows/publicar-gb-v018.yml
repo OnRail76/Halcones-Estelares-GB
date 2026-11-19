@@ -1,0 +1,72 @@
+name: Publicar Halcones Estelares GB v0.18 — Cañón de Plasma
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'RELEASE_NOTES_v0.18.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: halcones-estelares-gb-v018-final
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preparar dependencias de documentación
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-dejavu-core
+          python -m pip install "reportlab==4.4.9" "pillow==12.3.0"
+      - name: Generar ROM exacta de Cañón de Plasma y documentación v0.18
+        run: python tools/publicar_v018.py
+      - name: Verificar huellas del juego, documentos y carátula
+        run: |
+          set -euo pipefail
+          sha256sum -c SHA256SUMS.txt
+          echo 'a9cb44a5b985d15906857c51d6985e93173b65ff8e0f82253614fceb9a8ac393  rom/Halcones-Estelares-GB-0.18.gb' | sha256sum -c -
+          test -f src/audio.h
+          grep -q 'noise_hold==0x83' src/audio.h
+          test -f docs/Manual-ilustrado-GB-0.18.pdf
+          test -f docs/Atlas-y-memoria-GB-0.18.pdf
+      - name: Guardar ROM definitiva, código y documentación en main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- README.md CHANGELOG.md LEEME.md CAMBIOS_0.18.md SHA256.txt SHA256SUMS.txt SHA256_RELEASE_v0.18.txt VERIFICACION_PLASMA_0.18.json documentacion/VERIFICACION.json docs rom src/audio.h tools/build_documents.py
+          if ! git diff --cached --quiet; then
+            git commit -m "Halcones Estelares GB v0.18: Cañón de Plasma definitivo"
+            git push origin HEAD:main
+          fi
+      - name: Crear Release oficial con ROM, fuente, PDFs y portada
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          sha256sum -c SHA256SUMS.txt
+          if gh release view v0.18 >/dev/null 2>&1; then
+            gh release upload v0.18 dist/* --clobber
+            gh release edit v0.18 --title "Halcones Estelares GB — v0.18 · Cañón de Plasma (Versión Final)" --notes-file RELEASE_NOTES_v0.18.md --latest
+          else
+            gh release create v0.18 dist/* --target "$(git rev-parse HEAD)" --title "Halcones Estelares GB — v0.18 · Cañón de Plasma (Versión Final)" --notes-file RELEASE_NOTES_v0.18.md
+            gh release edit v0.18 --latest
+          fi
+          for file in dist/*; do
+            name=$(basename "$file")
+            gh release view v0.18 --json assets --jq '.assets[].name' | grep -Fxq "$name" || { echo "Falta $name"; exit 1; }
+          done
+          gh release view v0.18 --json name,url,assets --jq '{name,url,assets:[.assets[].name]}'
